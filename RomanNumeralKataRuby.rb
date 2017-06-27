@@ -59,12 +59,19 @@ describe 'roman numeral converter' do
 
 end
 
+
+
 def convert_to_numeral number
+	values = [9,5,4]
+	symbols = ["IX","V","IV"]
+
 	remaining = number
 	numeral = ""
-	remaining = appendNumeral remaining, 9, "IX", numeral
-	remaining = appendNumeral remaining, 5, "V", numeral
-	remaining = appendNumeral remaining, 4, "IV", numeral
+
+	values.each_index do |i|
+		remaining = appendNumeral remaining, values[i], symbols[i], numeral
+	end
+	
 	until remaining == 0
 		remaining -= 1
 		numeral << "I"
@@ -86,20 +93,6 @@ def convert_to_numeral number
 		# 	when remaining >= 10 && remaining < 50
 		# 		remaining -= 10
 		# 		numeral << "X"
-		# 	when remaining == 9
-		# 		remaining -= 9
-		# 		numeral << "IX"
-		# 	when remaining >= 5 
-		# 		remaining -= 5
-		# 		numeral << "V"
-		# 	when remaining == 4
-		# 		remaining -= 4
-		# 		numeral << "IV"
-		# 	when remaining >= 1 
-		# 		until remaining == 0
-		# 			remaining -= 1
-		# 			numeral << "I"
-		# 		end
 		# end
 	#end
 	numeral
