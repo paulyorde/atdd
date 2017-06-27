@@ -9,6 +9,10 @@ describe 'roman numeral converter' do
 		expect(convert_to_numeral 500).to eql "D"
 	end
 
+	it 'should convert 100 to C' do
+		expect(convert_to_numeral 100).to eql "C"
+	end
+
 end
 
 def convert_to_numeral number
@@ -22,6 +26,9 @@ def convert_to_numeral number
 			when remaining >= 500 && remaining < 1000
 				remaining -= 500
 				numeral << "D"
+			when remaining >= 100 && remaining < 500
+				remaining -= 100
+				numeral << "C"
 		end
 		return numeral 
 	end
