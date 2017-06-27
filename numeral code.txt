@@ -1,0 +1,81 @@
+public static String arabicToRoman(int arabic) {
+  StringBuilder result = new StringBuilder();
+  int remaining = arabic;
+  remaining = appendRomanNumerals(remaining, 9, "IX", result);
+  remaining = appendRomanNumerals(remaining, 5, "V", result);
+  remaining = appendRomanNumerals(remaining, 4, "IV", result);
+  for (int i = 0; i < remaining; i++) {
+    result.append("I");
+  }
+  return result.toString();
+}
+ 
+private static int appendRomanNumerals(int arabic, int value, String romanDigits, StringBuilder builder) {
+  int result = arabic;
+  if (result >= value) {
+    builder.append(romanDigits);
+    result -= value;
+  }
+  return result;
+}
+
+------------------------------
+
+private static final int[]    VALUES  = { 9,    5,   4 };
+private static final String[] SYMBOLS = { "IX", "V", "IV" };
+ 
+public static String arabicToRoman(int arabic) {
+  StringBuilder result = new StringBuilder();
+  int remaining = arabic;
+  for (int i = 0; i < VALUES.length; i++) {
+    remaining = appendRomanNumerals(remaining, VALUES[i], SYMBOLS[i], result);
+  }
+  for (int i = 0; i < remaining; i++) {
+    result.append("I");
+  }
+  return result.toString();
+}
+
+---------------------------
+
+public static String arabicToRoman(int arabic) {
+  StringBuilder result = new StringBuilder();
+  int remaining = arabic;
+  for (int i = 0; i < VALUES.length; i++) {
+    remaining = appendRomanNumerals(remaining, VALUES[i], SYMBOLS[i], result);
+  }
+  while (remaining >= 1) {
+    result.append("I");
+    remaining -= 1;
+  }
+  return result.toString();
+}
+ 
+private static int appendRomanNumerals(int arabic, int value, String romanDigits, StringBuilder builder) {
+  int result = arabic;
+  while (result >= value) {
+    builder.append(romanDigits);
+    result -= value;
+  }
+  return result;
+
+
+
+  -------
+
+  private static final int[]    VALUES  = { 9,    5,   4,    1   };
+private static final String[] SYMBOLS = { "IX", "V", "IV", "I" };
+ 
+public static String arabicToRoman(int arabic) {
+  StringBuilder result = new StringBuilder();
+  int remaining = arabic;
+  for (int i = 0; i < VALUES.length; i++) {
+    remaining = appendRomanNumerals(remaining, VALUES[i], SYMBOLS[i], result);
+  }
+  return result.toString();
+}
+
+----------------------------------
+
+private static final int[]    VALUES  = { 1000, 900,  500, 400,  100, 90,   50,  40,   10,  9,    5,   4,    1   };
+private static final String[] SYMBOLS = { "M",  "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
