@@ -82,22 +82,13 @@ def convert_to_numeral number
 			when remaining == 9
 				remaining -= 9
 				numeral << "IX"
-			when remaining >= 8 && remaining < 9
-				remaining -= 8
-				numeral << "VIII"
-			when remaining >= 7 && remaining < 9
-				remaining -= 7
-				numeral << "VII"
-			when remaining >= 6 && remaining < 9
-				remaining -= 6
-				numeral << "VI"
-			when remaining >= 5 && remaining < 10
+			when remaining >= 5 
 				remaining -= 5
 				numeral << "V"
 			when remaining == 4
 				remaining -= 4
 				numeral << "IV"
-			when remaining >= 1 && remaining < 4
+			when remaining >= 1 
 				until remaining == 0
 					remaining -= 1
 					numeral << "I"
