@@ -21,6 +21,22 @@ describe 'roman numeral converter' do
 		expect(convert_to_numeral 10).to eql "X"
 	end
 
+	it 'should convert 9 to IX' do
+		expect(convert_to_numeral 9).to eql "IX"
+	end
+
+	it 'should convert 8 to VIII' do
+		expect(convert_to_numeral 8).to eql "VIII"
+	end
+
+	it 'should convert 7 to VII' do
+		expect(convert_to_numeral 7).to eql "VII"
+	end
+
+	it 'should convert 6 to VI' do
+		expect(convert_to_numeral 6).to eql "VI"
+	end
+
 	it 'should convert 5 to V' do
 		expect(convert_to_numeral 5).to eql "V"
 	end
@@ -63,6 +79,18 @@ def convert_to_numeral number
 			when remaining >= 10 && remaining < 50
 				remaining -= 10
 				numeral << "X"
+			when remaining == 9
+				remaining -= 9
+				numeral << "IX"
+			when remaining >= 8 && remaining < 9
+				remaining -= 8
+				numeral << "VIII"
+			when remaining >= 7 && remaining < 9
+				remaining -= 7
+				numeral << "VII"
+			when remaining >= 6 && remaining < 9
+				remaining -= 6
+				numeral << "VI"
 			when remaining >= 5 && remaining < 10
 				remaining -= 5
 				numeral << "V"
