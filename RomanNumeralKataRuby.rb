@@ -97,19 +97,14 @@ def convert_to_numeral number
 			when remaining == 4
 				remaining -= 4
 				numeral << "IV"
-			when remaining >= 3 && remaining < 4
-				remaining -= 3
-				numeral << "III"
-			when remaining >= 2 && remaining < 4
-				remaining -= 2
-				numeral << "II"
-			when remaining >= 1 && remaining < 5
-				remaining -= 1
-				numeral << "I"
+			when remaining >= 1 && remaining < 4
+				until remaining == 0
+					remaining -= 1
+					numeral << "I"
+				end
 		end
-		return numeral 
 	end
-
+	numeral
 end
 
 
